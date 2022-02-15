@@ -4,7 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-
+/src/components/Shop/shop.data.js
 # testing
 /coverage
 
@@ -35,3 +35,4 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
