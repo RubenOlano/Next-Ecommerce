@@ -9,13 +9,14 @@ interface MenuProps {
 
 const MenuItem: FC<MenuProps> = ({ title, imageURL, size }) => {
   return (
-    <div
-      style={{ backgroundImage: `url(${imageURL})` }}
-      className={`${size && styles[size]} ${styles["menu-item"]}`}
-    >
+    <div className={`${size && styles[size]} ${styles["menu-item"]}`}>
+      <div
+        style={{ backgroundImage: `url(${imageURL})` }}
+        className={styles["background-image"]}
+      ></div>
       <div className={styles["content"]}>
-        <h1 className={styles["title"]}>{title}</h1>
-        <span className={styles["subtitle"]}>Shop Now</span>
+        <h1 className={styles["title"]}>{title.toUpperCase()}</h1>
+        <span className={styles["subtitle"]}>SHOP NOW</span>
       </div>
     </div>
   );
