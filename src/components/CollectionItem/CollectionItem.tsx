@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { ITEMS } from "../Shop/shop.data";
 import styles from "./CollectionItem.module.scss";
 
-const CollectionItem: FC<ITEMS> = ({ id, name, price, imageUrl }) => {
+const CollectionItem: FC<ITEMS> = ({ name, price, imageUrl }) => {
   return (
     <div className={styles["collection-item"]}>
       <div
