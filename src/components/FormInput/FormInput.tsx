@@ -6,7 +6,7 @@ interface FormProps {
   label: string;
   name: string;
   type: string;
-  required: boolean;
+  required?: boolean;
   value: string;
 }
 

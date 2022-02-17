@@ -2,11 +2,11 @@ import Link from "next/link";
 import React, { FC } from "react";
 import Crown from "../../assets/crown.svg";
 import styles from "./Header.module.scss";
-import firebase from "firebase/compat/app";
+import { User } from "firebase/auth";
 import { auth } from "../../firebase/firebase.util";
 
 interface HeaderProps {
-  user?: firebase.User | null;
+  user?: User | null;
 }
 
 const Header: FC<HeaderProps> = ({ user }) => {

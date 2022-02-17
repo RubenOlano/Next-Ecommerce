@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styles from "./Button.module.scss";
 interface ButtonProps {
-  type?: "submit";
+  type?: "submit" | "button";
   onClick?: any;
   isGoogleSignIn?: boolean;
 }
