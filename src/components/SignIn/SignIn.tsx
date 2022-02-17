@@ -3,6 +3,8 @@ import Button from "../Button/Button";
 import FormInput from "../FormInput/FormInput";
 import styles from "./SignIn.module.scss";
 
+import { signInWithgoogle } from "../../firebase/firebase.util";
+
 interface IForm {
   email: string;
   password: string;
@@ -53,8 +55,12 @@ const SignIn = () => {
           value={form.password}
           required
         />
-
-        <Button type="submit">Sign In</Button>
+        <div className={styles["buttons"]}>
+          <Button type="submit">Sign In</Button>
+          <Button isGoogleSignIn onClick={signInWithgoogle}>
+            Sign In With Google
+          </Button>
+        </div>
       </form>
     </div>
   );

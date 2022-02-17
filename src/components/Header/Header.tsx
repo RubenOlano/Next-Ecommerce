@@ -1,9 +1,15 @@
 import Link from "next/link";
-import React from "react";
+import React, { FC } from "react";
 import Crown from "../../assets/crown.svg";
 import styles from "./Header.module.scss";
+import firebase from "firebase/compat/app";
+import { auth } from "../../firebase/firebase.util";
 
-const Header = () => {
+interface HeaderProps {
+  user?: firebase.User | null;
+}
+
+const Header: FC<HeaderProps> = ({ user }) => {
   return (
     <div className={styles["header"]}>
       <Link href="/">
@@ -12,6 +18,16 @@ const Header = () => {
         </a>
       </Link>
       <div className={styles["options"]}>
+        {user ? (
+          <div className={styles["option"]} onClick={() => auth.signOut()}>
+            Logout
+          </div>
+        ) : (
+          <Link passHref href="/signin">
+            <div className={styles["option"]}>Sign In</div>
+          </Link>
+        )}
+
         <Link passHref href="/shop">
           <div className={styles["option"]}>Shop</div>
         </Link>
