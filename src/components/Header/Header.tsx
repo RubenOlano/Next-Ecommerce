@@ -5,9 +5,11 @@ import styles from "./Header.module.scss";
 import { auth } from "../../firebase/firebase.util";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/rootReducer";
+import CartIcon from "../CartIcon/CartIcon";
+import CartDropDown from "../CartDropDown/CartDropDown";
 
 const Header = () => {
-  const user = useSelector((state: RootState) => state.user.currentUser);
+  const { user, cart } = useSelector((state: RootState) => state);
 
   return (
     <div className={styles["header"]}>
@@ -32,7 +34,9 @@ const Header = () => {
             <div className={styles["option"]}>Sign In</div>
           </Link>
         )}
+        <CartIcon />
       </div>
+      {!cart.hidden && <CartDropDown />}
     </div>
   );
 };
