@@ -1,15 +1,14 @@
 import Link from "next/link";
-import React, { FC } from "react";
+import React from "react";
 import Crown from "../../assets/crown.svg";
 import styles from "./Header.module.scss";
-import { User } from "firebase/auth";
 import { auth } from "../../firebase/firebase.util";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/rootReducer";
 
-interface HeaderProps {
-  user?: User | null;
-}
+const Header = () => {
+  const user = useSelector((state: RootState) => state.user.currentUser);
 
-const Header: FC<HeaderProps> = ({ user }) => {
   return (
     <div className={styles["header"]}>
       <Link href="/">
@@ -38,5 +37,4 @@ const Header: FC<HeaderProps> = ({ user }) => {
     </div>
   );
 };
-
 export default Header;

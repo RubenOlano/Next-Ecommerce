@@ -1,15 +1,17 @@
 import type { NextPage } from "next";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Header from "../components/Header/Header";
 import Homepage from "../components/Homepage/Homepage";
 import { auth, createUserProfileDocument } from "../firebase/firebase.util";
-import { User } from "firebase/auth";
 import { onSnapshot } from "firebase/firestore";
+import { connect, useDispatch } from "react-redux";
+import setCurrentUser from "../redux/user/userActions";
+import { AppDispatch } from "../redux/store";
+import { Unsubscribe } from "firebase/auth";
 
 const Home: NextPage = () => {
-  const [currUser, setCurrUser] = useState<any | User>(null);
-
-  const unsub = useRef<any>(null);
+  const dispatch = useDispatch();
+  const unsub = useRef<Unsubscribe>();
 
   useEffect(() => {
     unsub.current = auth.onAuthStateChanged(async (user) => {
@@ -17,22 +19,28 @@ const Home: NextPage = () => {
         const docRef = await createUserProfileDocument(user);
         if (!docRef) return;
         onSnapshot(docRef, (snapshot) => {
-          setCurrUser({
-            id: snapshot.id,
-            ...snapshot.data(),
-          });
+          dispatch(
+            setCurrentUser({
+              id: snapshot.id,
+              ...snapshot.data(),
+            })
+          );
         });
       }
+
+      dispatch(setCurrentUser(user));
     });
-    console.log(currUser);
-    return () => unsub.current();
-  }, [currUser]);
+    return () => (unsub.current ? unsub.current() : undefined);
+  }, [dispatch]);
   return (
     <>
-      <Header user={currUser} />
+      <Header />
       <Homepage />
     </>
   );
 };
 
-export default Home;
+const mapDispatchToProps = (dispatch: AppDispatch) => ({
+  setCurrentUser: (user: any) => dispatch(setCurrentUser(user)),
+});
+export default connect(null, mapDispatchToProps)(Home);

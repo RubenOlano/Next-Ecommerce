@@ -2,7 +2,7 @@ import { createReducer } from "@reduxjs/toolkit";
 import setCurrentUser from "./userActions";
 
 interface IUserState {
-  currentUser: null | any;
+  currentUser: any;
 }
 
 const initState: IUserState = {
