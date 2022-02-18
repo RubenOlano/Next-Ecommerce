@@ -17,6 +17,12 @@ const Header = () => {
         </a>
       </Link>
       <div className={styles["options"]}>
+        <Link passHref href="/shop">
+          <div className={styles["option"]}>Shop</div>
+        </Link>
+        <Link passHref href="/contact">
+          <div className={styles["option"]}>Contact</div>
+        </Link>
         {user ? (
           <div className={styles["option"]} onClick={() => auth.signOut()}>
             Logout
@@ -26,13 +32,6 @@ const Header = () => {
             <div className={styles["option"]}>Sign In</div>
           </Link>
         )}
-
-        <Link passHref href="/shop">
-          <div className={styles["option"]}>Shop</div>
-        </Link>
-        <Link passHref href="/contact">
-          <div className={styles["option"]}>Contact</div>
-        </Link>
       </div>
     </div>
   );
