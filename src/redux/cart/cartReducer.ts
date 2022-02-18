@@ -11,11 +11,15 @@ export interface ICartItems {
 interface ICartState {
   hidden: boolean;
   cartItems: ICartItems[];
+  totalCount: number;
+  totalPrice: number;
 }
 
 const initState: ICartState = {
   hidden: true,
   cartItems: [],
+  totalCount: 0,
+  totalPrice: 0,
 };
 
 const cartReducer = createReducer(initState, (builder) => {
@@ -25,6 +29,8 @@ const cartReducer = createReducer(initState, (builder) => {
     })
     .addCase(addItem, (state, action) => {
       state.cartItems = addItemsToCart(state.cartItems, action.payload);
+      state.totalCount++;
+      state.totalPrice += action.payload.item.price;
     });
 });
 

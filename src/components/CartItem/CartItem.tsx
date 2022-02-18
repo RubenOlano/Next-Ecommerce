@@ -18,7 +18,7 @@ const CartItem: FC<cartItemProps> = ({
       <div className={style["item-details"]}>
         <span className={style["name"]}>{name}</span>
         <span className={style["price"]}>
-          {quantity && `${quantity} x`}${price}
+          {quantity && `${quantity} x `}${price}
         </span>
       </div>
     </div>

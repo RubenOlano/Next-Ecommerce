@@ -20,7 +20,7 @@ const CollectionItem: FC<CollectionProps> = ({ item }) => {
       />
       <div className={styles["collection-footer"]}>
         <span className={styles["name"]}>{name}</span>
-        <span className={styles["price"]}>{price}</span>
+        <span className={styles["price"]}>${price}</span>
       </div>
       <Button
         onClick={() => dispatch(addItem({ item }))}
