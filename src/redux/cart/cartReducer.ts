@@ -1,7 +1,11 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { ITEMS } from "../../components/Shop/shop.data";
-import { addItem, toggleHidden } from "./cartActions";
-import { addItemsToCart } from "./cartUtil";
+import { addItem, clearItems, removeItem, toggleHidden } from "./cartActions";
+import {
+  addItemsToCart,
+  clearItemsFromCart,
+  removeItemFromCart,
+} from "./cartUtil";
 
 export interface ICartItems {
   item: ITEMS;
@@ -31,6 +35,17 @@ const cartReducer = createReducer(initState, (builder) => {
       state.cartItems = addItemsToCart(state.cartItems, action.payload);
       state.totalCount++;
       state.totalPrice += action.payload.item.price;
+    })
+    .addCase(removeItem, (state, action) => {
+      state.cartItems = removeItemFromCart(state.cartItems, action.payload);
+      state.totalCount--;
+      state.totalPrice -= action.payload.item.price;
+    })
+    .addCase(clearItems, (state, action) => {
+      state.cartItems = clearItemsFromCart(state.cartItems, action.payload);
+      state.totalCount -= action.payload.quantity || 0;
+      state.totalPrice -=
+        (action.payload.quantity || 0) * action.payload.item.price;
     });
 });
 

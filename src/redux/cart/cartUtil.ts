@@ -22,3 +22,28 @@ export const addItemsToCart = (
   }
   return [...cartItems, cartItemToAdd];
 };
+
+export const clearItemsFromCart = (
+  cartItems: ICartItems[],
+  cartItemToRemove: ICartItems
+): ICartItems[] => {
+  return cartItems.filter((item) => item.item.id !== cartItemToRemove.item.id);
+};
+
+export const removeItemFromCart = (
+  cartItems: ICartItems[],
+  cartItemToRemove: ICartItems
+): ICartItems[] => {
+  const existingCartItem = cartItems.find(
+    ({ item }) => item.id === cartItemToRemove.item.id
+  );
+
+  if (existingCartItem?.quantity === 1) {
+    return cartItems.filter(({ item }) => item.id !== cartItemToRemove.item.id);
+  }
+  return cartItems.map((item) =>
+    item.item.id === cartItemToRemove.item.id
+      ? { ...item, quantity: item.quantity ? item.quantity - 1 : 0 }
+      : item
+  );
+};
