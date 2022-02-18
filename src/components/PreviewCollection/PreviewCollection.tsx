@@ -19,7 +19,7 @@ const PreviewCollection: FC<CollectionProps> = ({
         {items
           .filter((_item, index) => index < 4)
           .map((item) => (
-            <CollectionItem key={item.id} {...item}>
+            <CollectionItem key={item.id} item={item}>
               {item.name}
             </CollectionItem>
           ))}

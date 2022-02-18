@@ -4,19 +4,23 @@ interface ButtonProps {
   type?: "submit" | "button";
   onClick?: any;
   isGoogleSignIn?: boolean;
+  inverted?: boolean;
+  className?: string;
 }
 
 const Button: FC<ButtonProps> = ({
   children,
   isGoogleSignIn,
-  ...otherProps
+  inverted,
+  className,
+  onClick,
 }) => {
   return (
     <button
       className={`${styles["custom-button"]} ${
         isGoogleSignIn ? styles["google-sign-in"] : ""
-      }`}
-      {...otherProps}
+      } ${inverted ? styles["inverted"] : ""} ${className && className}`}
+      onClick={onClick}
     >
       {children}
     </button>

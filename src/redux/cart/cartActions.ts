@@ -1,5 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
+import { ICartItems } from "./cartReducer";
 
-const toggleHidden = createAction("cart/toggleHidden");
-
-export default toggleHidden;
+export const toggleHidden = createAction("cart/toggleHidden");
+export const addItem = createAction<ICartItems>("cart/addItem");
