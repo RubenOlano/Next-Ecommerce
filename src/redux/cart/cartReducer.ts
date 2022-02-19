@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { ITEMS } from "../../components/Shop/shop.data";
+import { ITEMS } from "../shop/shop.data";
 import { addItem, clearItems, removeItem, toggleHidden } from "./cartActions";
 import {
   addItemsToCart,

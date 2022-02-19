@@ -1,6 +1,6 @@
 import React, { FC } from "react";
+import { ITEMS } from "../../redux/shop/shop.data";
 import CollectionItem from "../CollectionItem/CollectionItem";
-import { ITEMS } from "../Shop/shop.data";
 import styles from "./preview.module.scss";
 
 interface CollectionProps {

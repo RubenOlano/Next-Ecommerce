@@ -1,17 +1,17 @@
+import { useRouter } from "next/router";
 import React, { FC } from "react";
+import { ISections } from "../../redux/directory/directoryReducer";
 import styles from "./menu-item.module.scss";
 
-interface MenuProps {
-  title: string;
-  imageURL: string;
-  size?: string;
-}
-
-const MenuItem: FC<MenuProps> = ({ title, imageURL, size }) => {
+const MenuItem: FC<ISections> = ({ title, imageUrl, size, linkUrl }) => {
+  const router = useRouter();
   return (
-    <div className={`${size && styles[size]} ${styles["menu-item"]}`}>
+    <div
+      onClick={() => router.push(`/${linkUrl}`)}
+      className={`${size && styles[size]} ${styles["menu-item"]}`}
+    >
       <div
-        style={{ backgroundImage: `url(${imageURL})` }}
+        style={{ backgroundImage: `url(${imageUrl})` }}
         className={styles["background-image"]}
       ></div>
       <div className={styles["content"]}>

@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { ITEMS } from "../Shop/shop.data";
+import { ITEMS } from "../../redux/shop/shop.data";
 import styles from "./CollectionItem.module.scss";
 import Button from "../Button/Button";
 import { useDispatch } from "react-redux";

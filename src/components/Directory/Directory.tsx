@@ -1,56 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import MenuItem from "../MenuItem/MenuItem";
 import styles from "./directory.module.scss";
-
-interface ISections {
-  title: string;
-  imageUrl: string;
-  id: number;
-  linkUrl: string;
-  size?: string;
-}
-
-const initSections: ISections[] = [
-  {
-    title: "hats",
-    imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
-    id: 1,
-    linkUrl: "shop/hats",
-  },
-  {
-    title: "jackets",
-    imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
-    id: 2,
-    linkUrl: "shop/jackets",
-  },
-  {
-    title: "sneakers",
-    imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
-    id: 3,
-    linkUrl: "shop/sneakers",
-  },
-  {
-    title: "womens",
-    imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
-    size: "large",
-    id: 4,
-    linkUrl: "shop/womens",
-  },
-  {
-    title: "mens",
-    imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
-    size: "large",
-    id: 5,
-    linkUrl: "shop/mens",
-  },
-];
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/rootReducer";
 
 const Directory = () => {
-  const [sections, _setSections] = useState<ISections[]>(initSections);
+  const sections = useSelector((state: RootState) => state.directory);
   return (
     <div className={styles["directory-menu"]}>
-      {sections.map(({ title, id, imageUrl, size }) => (
-        <MenuItem key={id} title={title} imageURL={imageUrl} size={size} />
+      {sections.map((item) => (
+        <MenuItem key={item.id} {...item} />
       ))}
     </div>
   );

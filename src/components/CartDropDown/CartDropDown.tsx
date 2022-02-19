@@ -21,9 +21,11 @@ const CartDropDown = () => {
           <span className={styles["empty-message"]}>Your cart is empty</span>
         )}
       </div>
-      <Link passHref href="/checkout">
-        <Button onClick={() => dispatch(toggleHidden())}>GO TO CHECKOUT</Button>
-      </Link>
+      <Button onClick={() => dispatch(toggleHidden())}>
+        <Link passHref href="/checkout">
+          GO TO CHECKOUT
+        </Link>
+      </Button>
     </div>
   );
 };

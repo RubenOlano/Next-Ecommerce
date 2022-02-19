@@ -9,7 +9,10 @@ import CartIcon from "../CartIcon/CartIcon";
 import CartDropDown from "../CartDropDown/CartDropDown";
 
 const Header = () => {
-  const { user, cart } = useSelector((state: RootState) => state);
+  const {
+    user: { currentUser },
+    cart,
+  } = useSelector((state: RootState) => state);
 
   return (
     <div className={styles["header"]}>
@@ -25,9 +28,9 @@ const Header = () => {
         <Link passHref href="/contact">
           <div className={styles["option"]}>Contact</div>
         </Link>
-        {user ? (
+        {currentUser ? (
           <div className={styles["option"]} onClick={() => auth.signOut()}>
-            Logout
+            Log Out
           </div>
         ) : (
           <Link passHref href="/signin">
