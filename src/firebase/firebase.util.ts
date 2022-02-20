@@ -1,9 +1,9 @@
 import { initializeApp, FirebaseOptions } from "firebase/app";
 import {
   GoogleAuthProvider,
-  signInWithRedirect,
   getAuth,
   User,
+  signInWithPopup,
 } from "firebase/auth";
 import { getFirestore, getDoc, doc, setDoc } from "firebase/firestore";
 
@@ -46,5 +46,5 @@ export const createUserProfileDocument = async (userAuth: User | null) => {
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({ prompt: "select_account" });
 export const signInWithgoogle = async () =>
-  await signInWithRedirect(auth, provider);
+  await signInWithPopup(auth, provider);
 export default firebase;

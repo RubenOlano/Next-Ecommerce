@@ -1,8 +1,7 @@
-import Image from "next/image";
 import React, { FC } from "react";
 import { useDispatch } from "react-redux";
 import { addItem, clearItems, removeItem } from "../../redux/cart/cartActions";
-import { ITEMS } from "../Shop/shop.data";
+import { ITEMS } from "../../redux/shop/shop.data";
 import styles from "./CheckoutItem.module.scss";
 
 interface CheckoutItemProps {
@@ -16,7 +15,7 @@ const CheckoutItem: FC<CheckoutItemProps> = ({ item, quantity }) => {
   return (
     <div className={styles["checkout-item"]}>
       <div className={styles["image-container"]}>
-        <Image height="100%" width="100%" src={imageUrl} alt="item" />
+        <img height="100%" width="100%" src={imageUrl} alt="item" />
       </div>
       <span className={styles["name"]}>{name}</span>
       <span className={styles["quantity"]}>

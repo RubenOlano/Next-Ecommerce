@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
-import Header from "../components/Header/Header";
 import SignIn from "../components/SignIn/SignIn";
 import { auth, createUserProfileDocument } from "../firebase/firebase.util";
 import { onSnapshot } from "firebase/firestore";
@@ -43,13 +42,10 @@ const Signin = () => {
   }, [user, router]);
 
   return (
-    <>
-      <Header />
-      <div className={styles["sign-in-and-sign-up"]}>
-        <SignIn />
-        <SignUp />;
-      </div>
-    </>
+    <div className={styles["sign-in-and-sign-up"]}>
+      <SignIn />
+      <SignUp />;
+    </div>
   );
 };
 

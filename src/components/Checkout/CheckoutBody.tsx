@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/rootReducer";
 import CheckoutItem from "../CheckoutItem/CheckoutItem";
+import StripeButton from "../StripeButton/StripeButton";
 import styles from "./Checkout.module.scss";
 
 const Checkout = () => {
@@ -32,6 +33,7 @@ const Checkout = () => {
         <CheckoutItem key={item.id} quantity={quantity} item={item} />
       ))}
       <div className={styles["total"]}>Total: ${totalPrice}</div>
+      <StripeButton price={totalPrice} />
     </div>
   );
 };

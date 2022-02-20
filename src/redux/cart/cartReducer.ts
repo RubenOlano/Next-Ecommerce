@@ -43,9 +43,9 @@ const cartReducer = createReducer(initState, (builder) => {
     })
     .addCase(clearItems, (state, action) => {
       state.cartItems = clearItemsFromCart(state.cartItems, action.payload);
-      state.totalCount -= action.payload.quantity || 0;
+      state.totalCount -= action.payload.quantity || 1;
       state.totalPrice -=
-        (action.payload.quantity || 0) * action.payload.item.price;
+        (action.payload.quantity || 1) * action.payload.item.price;
     });
 });
 
