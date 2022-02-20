@@ -4,6 +4,7 @@ import { store, persistor } from "../redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import Header from "../components/Header/Header";
 import Head from "next/head";
+import "./styles.scss";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>

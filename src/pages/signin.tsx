@@ -44,7 +44,7 @@ const Signin = () => {
   return (
     <div className={styles["sign-in-and-sign-up"]}>
       <SignIn />
-      <SignUp />;
+      <SignUp />
     </div>
   );
 };

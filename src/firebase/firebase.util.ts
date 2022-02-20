@@ -5,7 +5,14 @@ import {
   User,
   signInWithPopup,
 } from "firebase/auth";
-import { getFirestore, getDoc, doc, setDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  getDoc,
+  doc,
+  setDoc,
+  collection,
+  writeBatch,
+} from "firebase/firestore";
 
 const config: FirebaseOptions = {
   apiKey: "AIzaSyDeT1VI4Ef8cSkSxxehg8wIfzfBPX5P-IU",
@@ -41,6 +48,20 @@ export const createUserProfileDocument = async (userAuth: User | null) => {
   }
 
   return docRef;
+};
+
+export const addCollectionAndItems = async (
+  collectionKey: string,
+  objectsToAdd: any[]
+) => {
+  const collectionRef = collection(firestore, collectionKey);
+  const batch = writeBatch(firestore);
+  objectsToAdd.forEach((obj) => {
+    const newRef = doc(collectionRef);
+    batch.set(newRef, obj);
+  });
+
+  return await batch.commit();
 };
 
 const provider = new GoogleAuthProvider();

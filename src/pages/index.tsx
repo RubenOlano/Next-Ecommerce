@@ -3,14 +3,17 @@ import { useEffect, useRef } from "react";
 import Homepage from "../components/Homepage/Homepage";
 import { auth, createUserProfileDocument } from "../firebase/firebase.util";
 import { onSnapshot } from "firebase/firestore";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import setCurrentUser from "../redux/user/userActions";
 import { Unsubscribe } from "firebase/auth";
+import { RootState } from "../redux/rootReducer";
+import { selectCollectionsForPreview } from "../redux/shop/shopSelector";
 
 const Home: NextPage = () => {
   const dispatch = useDispatch();
   const unsub = useRef<Unsubscribe>();
-
+  const state = useSelector((state: RootState) => state);
+  const collections = selectCollectionsForPreview(state);
   useEffect(() => {
     unsub.current = auth.onAuthStateChanged(async (user) => {
       if (user) {
@@ -29,7 +32,7 @@ const Home: NextPage = () => {
       dispatch(setCurrentUser(user));
     });
     return () => (unsub.current ? unsub.current() : undefined);
-  }, [dispatch]);
+  }, [dispatch, collections]);
   return <Homepage />;
 };
 export default Home;
