@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { FC } from "react";
-import { ISections } from "../../redux/directory/directoryReducer";
+import { ISections } from "../../types/types";
 import styles from "./menu-item.module.scss";
 
 const MenuItem: FC<ISections> = ({ title, imageUrl, size, linkUrl }) => {

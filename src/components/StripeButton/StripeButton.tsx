@@ -1,9 +1,6 @@
 import React, { FC } from "react";
 import StripeCheckout, { Token } from "react-stripe-checkout";
-
-interface StripeProps {
-  price: number;
-}
+import { StripeProps } from "../../types/types";
 
 const StripeButton: FC<StripeProps> = ({ price }) => {
   const priceForStripe = price * 100;

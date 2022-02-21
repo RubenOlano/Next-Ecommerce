@@ -1,20 +1,4 @@
-/* Used as starting data for ShopPage */
-
-export type ISHOP_DATA = {
-  [key: string]: {
-    id: number;
-    title: string;
-    routeName: string;
-    items: ITEMS[];
-  };
-};
-
-export type ITEMS = {
-  id: number;
-  name: string;
-  imageUrl: string;
-  price: number;
-};
+import { ISHOP_DATA } from "../../types/types";
 
 const SHOP_DATA: ISHOP_DATA = {
   hats: {

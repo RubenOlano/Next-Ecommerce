@@ -1,13 +1,8 @@
 import React, { FC } from "react";
 import { useDispatch } from "react-redux";
 import { addItem, clearItems, removeItem } from "../../redux/cart/cartActions";
-import { ITEMS } from "../../redux/shop/shop.data";
+import { CheckoutItemProps } from "../../types/types";
 import styles from "./CheckoutItem.module.scss";
-
-interface CheckoutItemProps {
-  item: ITEMS;
-  quantity?: number;
-}
 
 const CheckoutItem: FC<CheckoutItemProps> = ({ item, quantity }) => {
   const { name, imageUrl, price } = item;

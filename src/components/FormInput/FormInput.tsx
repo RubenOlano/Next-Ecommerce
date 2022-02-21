@@ -1,14 +1,6 @@
 import React, { FC } from "react";
+import { FormProps } from "../../types/types";
 import styles from "./FormInput.module.scss";
-
-interface FormProps {
-  handleChange: (e: React.FormEvent<HTMLInputElement>) => void;
-  label: string;
-  name: string;
-  type: string;
-  required?: boolean;
-  value: string;
-}
 
 const FormInput: FC<FormProps> = ({ handleChange, label, ...otherProps }) => {
   return (

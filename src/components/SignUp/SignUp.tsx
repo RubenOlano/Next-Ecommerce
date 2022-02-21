@@ -4,13 +4,7 @@ import Button from "../Button/Button";
 import { auth, createUserProfileDocument } from "../../firebase/firebase.util";
 import styles from "./SignUp.module.scss";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-
-interface info {
-  displayName: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
+import { info } from "../../types/types";
 
 const initInfo: info = {
   displayName: "",

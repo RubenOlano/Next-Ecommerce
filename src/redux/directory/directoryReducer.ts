@@ -1,12 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-
-export interface ISections {
-  title: string;
-  imageUrl: string;
-  id: number;
-  linkUrl: string;
-  size?: string;
-}
+import { ISections } from "../../types/types";
 
 const initSections: ISections[] = [
   {

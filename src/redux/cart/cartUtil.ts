@@ -1,4 +1,4 @@
-import { ICartItems } from "./cartReducer";
+import { ICartItems } from "../../types/types";
 
 export const addItemsToCart = (
   cartItems: ICartItems[],

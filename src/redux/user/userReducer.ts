@@ -1,9 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
+import { IUserState } from "../../types/types";
 import setCurrentUser from "./userActions";
-
-interface IUserState {
-  currentUser: any;
-}
 
 const initState: IUserState = {
   currentUser: null,

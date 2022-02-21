@@ -1,11 +1,6 @@
 import React, { FC } from "react";
-import { ITEMS } from "../../redux/shop/shop.data";
+import { cartItemProps } from "../../types/types";
 import style from "./CartItem.module.scss";
-
-interface cartItemProps {
-  item: ITEMS;
-  quantity?: number;
-}
 
 const CartItem: FC<cartItemProps> = ({
   item: { imageUrl, price, name },

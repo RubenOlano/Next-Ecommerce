@@ -1,12 +1,6 @@
 import React, { FC } from "react";
+import { ButtonProps } from "../../types/types";
 import styles from "./Button.module.scss";
-interface ButtonProps {
-  type?: "submit" | "button";
-  onClick?: () => any;
-  isGoogleSignIn?: boolean;
-  inverted?: boolean;
-  className?: string;
-}
 
 const Button: FC<ButtonProps> = ({
   children,

@@ -1,13 +1,9 @@
 import React, { FC } from "react";
-import { ITEMS } from "../../redux/shop/shop.data";
 import styles from "./CollectionItem.module.scss";
 import Button from "../Button/Button";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../redux/cart/cartActions";
-
-interface CollectionProps {
-  item: ITEMS;
-}
+import { CollectionProps } from "../../types/types";
 
 const CollectionItem: FC<CollectionProps> = ({ item }) => {
   const { imageUrl, name, price } = item;

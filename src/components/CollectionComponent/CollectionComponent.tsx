@@ -14,8 +14,8 @@ const CollectionComponent = () => {
     <div className={styles["collection-page"]}>
       <h2 className={styles["title"]}>{collection?.title}</h2>
       <div className={styles["items"]}>
-        {collection?.items.map((items) => (
-          <CollectionItem item={items} key={items.id} />
+        {collection?.items.map((item) => (
+          <CollectionItem item={item} key={item.id} />
         ))}
       </div>
     </div>

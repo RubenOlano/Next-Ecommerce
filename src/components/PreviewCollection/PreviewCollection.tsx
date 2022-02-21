@@ -1,17 +1,9 @@
 import React, { FC } from "react";
-import { ITEMS } from "../../redux/shop/shop.data";
+import { PreviewCollectionProps } from "../../types/types";
 import CollectionItem from "../CollectionItem/CollectionItem";
 import styles from "./preview.module.scss";
 
-interface CollectionProps {
-  title: string;
-  items: ITEMS[];
-}
-
-const PreviewCollection: FC<CollectionProps> = ({
-  title,
-  items,
-}: CollectionProps) => {
+const PreviewCollection: FC<PreviewCollectionProps> = ({ title, items }) => {
   return (
     <div className={styles["collection-preview"]}>
       <h1 className={styles["title"]}>{title.toUpperCase()}</h1>

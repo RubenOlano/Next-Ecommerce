@@ -1,9 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
-import SHOP_DATA, { ISHOP_DATA } from "./shop.data";
-
-interface ICollection {
-  collections: ISHOP_DATA;
-}
+import { ICollection } from "../../types/types";
+import SHOP_DATA from "./shop.data";
 
 const initialState: ICollection = {
   collections: SHOP_DATA,

@@ -5,11 +5,7 @@ import styles from "./SignIn.module.scss";
 
 import { auth, signInWithgoogle } from "../../firebase/firebase.util";
 import { signInWithEmailAndPassword } from "firebase/auth";
-
-interface IForm {
-  email: string;
-  password: string;
-}
+import { IForm } from "../../types/types";
 
 const initForm: IForm = {
   email: "",

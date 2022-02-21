@@ -1,23 +1,11 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { ITEMS } from "../shop/shop.data";
+import { ICartState } from "../../types/types";
 import { addItem, clearItems, removeItem, toggleHidden } from "./cartActions";
 import {
   addItemsToCart,
   clearItemsFromCart,
   removeItemFromCart,
 } from "./cartUtil";
-
-export interface ICartItems {
-  item: ITEMS;
-  quantity?: number;
-}
-
-interface ICartState {
-  hidden: boolean;
-  cartItems: ICartItems[];
-  totalCount: number;
-  totalPrice: number;
-}
 
 const initState: ICartState = {
   hidden: true,
