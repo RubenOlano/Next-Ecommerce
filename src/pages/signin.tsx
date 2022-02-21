@@ -12,7 +12,7 @@ import { RootState } from "../redux/rootReducer";
 
 const Signin = () => {
   const dispatch = useDispatch();
-  const unsub = useRef<Unsubscribe | any>(null);
+  const unsub = useRef<Unsubscribe | any>();
   const user = useSelector((state: RootState) => state.user.currentUser);
   const router = useRouter();
 
