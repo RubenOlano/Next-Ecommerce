@@ -6,8 +6,9 @@ import PreviewCollection from "../PreviewCollection/PreviewCollection";
 import styles from "./CollectionsOverview.module.scss";
 
 const CollectionsOverview = () => {
-  const state = useSelector((state: RootState) => state);
-  const shopData = selectCollectionsForPreview(state);
+  const shopData = useSelector((state: RootState) =>
+    selectCollectionsForPreview(state)
+  );
   return (
     <div className={styles["collections-overview"]}>
       {shopData.map((item) => (

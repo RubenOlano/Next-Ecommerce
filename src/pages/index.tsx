@@ -12,8 +12,9 @@ import { selectCollectionsForPreview } from "../redux/shop/shopSelector";
 const Home: NextPage = () => {
   const dispatch = useDispatch();
   const unsub = useRef<Unsubscribe>();
-  const state = useSelector((state: RootState) => state);
-  const collections = selectCollectionsForPreview(state);
+  const collections = useSelector((state: RootState) =>
+    selectCollectionsForPreview(state)
+  );
   useEffect(() => {
     unsub.current = auth.onAuthStateChanged(async (user) => {
       if (user) {

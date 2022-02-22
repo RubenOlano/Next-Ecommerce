@@ -88,3 +88,8 @@ export interface collection {
   title: string;
   items: any[];
 }
+
+export interface SpinnerProps {
+  isLoading: boolean;
+  otherProps?: any;
+}

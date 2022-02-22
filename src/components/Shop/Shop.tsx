@@ -21,7 +21,7 @@ const Shop = () => {
       dispatch(updateCollections(collection));
       setLoading(false);
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="shop-page">

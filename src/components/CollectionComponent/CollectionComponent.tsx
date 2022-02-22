@@ -9,8 +9,9 @@ import { RootState } from "../../redux/rootReducer";
 const CollectionComponent = () => {
   const router = useRouter();
   const { collectionId } = router.query;
-  const state = useSelector((state: RootState) => state);
-  const collection = selectCollection(state, collectionId as string);
+  const collection = useSelector((state: RootState) =>
+    selectCollection(state, collectionId as string)
+  );
 
   return (
     <div className={styles["collection-page"]}>
