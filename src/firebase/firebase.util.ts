@@ -12,7 +12,10 @@ import {
   setDoc,
   collection,
   writeBatch,
+  DocumentData,
+  QuerySnapshot,
 } from "firebase/firestore";
+import { ISHOP_DATA } from "../types/types";
 
 const config: FirebaseOptions = {
   apiKey: "AIzaSyDeT1VI4Ef8cSkSxxehg8wIfzfBPX5P-IU",
@@ -62,6 +65,24 @@ export const addCollectionAndItems = async (
   });
 
   return await batch.commit();
+};
+
+export const convertCollectionsSnapshotToMap = (
+  collections: QuerySnapshot<DocumentData>
+) => {
+  const transformedCollection = collections.docs.map((doc) => {
+    const { title, items } = doc.data();
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: doc.id,
+      title,
+      items,
+    };
+  });
+  return transformedCollection.reduce((accumulator, collection) => {
+    accumulator[collection.title.toLowerCase() as string] = collection;
+    return accumulator;
+  }, {} as ISHOP_DATA);
 };
 
 const provider = new GoogleAuthProvider();

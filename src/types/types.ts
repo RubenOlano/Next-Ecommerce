@@ -64,7 +64,7 @@ export interface IUserState {
 
 export interface ISHOP_DATA {
   [key: string]: {
-    id: number;
+    id: number | string;
     title: string;
     routeName: string;
     items: ITEMS[];
@@ -80,4 +80,11 @@ export interface ITEMS {
 export interface PreviewCollectionProps {
   title: string;
   items: ITEMS[];
+}
+
+export interface collection {
+  routName: string;
+  id: string;
+  title: string;
+  items: any[];
 }
