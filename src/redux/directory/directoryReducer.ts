@@ -1,4 +1,4 @@
-import { createReducer } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { ISections } from "../../types/types";
 
 const initSections: ISections[] = [
@@ -36,8 +36,14 @@ const initSections: ISections[] = [
   },
 ];
 
-const directoryReducer = createReducer(initSections, (builder) => {
-  builder.addDefaultCase((state) => state);
+const directorySlice = createSlice({
+  initialState: initSections,
+  name: "directory",
+  reducers: {
+    default(state) {
+      return state;
+    },
+  },
 });
 
-export default directoryReducer;
+export default directorySlice.reducer;

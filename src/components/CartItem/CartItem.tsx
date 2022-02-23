@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { FC } from "react";
 import { cartItemProps } from "../../types/types";
 import style from "./CartItem.module.scss";
@@ -8,7 +9,7 @@ const CartItem: FC<cartItemProps> = ({
 }) => {
   return (
     <div className={style["cart-item"]}>
-      <img width="100%" height="100%" src={imageUrl} alt={name} />
+      <Image width="100%" height="100%" src={imageUrl} alt={name} />
       <div className={style["item-details"]}>
         <span className={style["name"]}>{name}</span>
         <span className={style["price"]}>

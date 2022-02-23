@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React, { FC } from "react";
 import { useDispatch } from "react-redux";
-import { addItem, clearItems, removeItem } from "../../redux/cart/cartActions";
+import { addItem, clearItems, removeItem } from "../../redux/cart/cartReducer";
 import { CheckoutItemProps } from "../../types/types";
 import styles from "./CheckoutItem.module.scss";
 

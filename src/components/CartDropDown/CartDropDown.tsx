@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleHidden } from "../../redux/cart/cartActions";
+import { toggleHidden } from "../../redux/cart/cartReducer";
 import { RootState } from "../../redux/rootReducer";
 import Button from "../Button/Button";
 import CartItem from "../CartItem/CartItem";

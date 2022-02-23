@@ -57,6 +57,8 @@ export interface ISections {
 }
 export interface ICollection {
   collections: ISHOP_DATA;
+  isFetching: boolean;
+  errorMessage?: string;
 }
 export interface IUserState {
   currentUser: any;

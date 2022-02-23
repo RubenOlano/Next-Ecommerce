@@ -6,7 +6,7 @@ import { onSnapshot } from "firebase/firestore";
 import SignUp from "../components/SignUp/SignUp";
 import styles from "../components/PageStyes/Signin.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import setCurrentUser from "../redux/user/userActions";
+import { setCurrentUser } from "../redux/user/userReducer";
 import { Unsubscribe } from "firebase/auth";
 import { RootState } from "../redux/rootReducer";
 

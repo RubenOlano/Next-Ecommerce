@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import styles from "./CollectionItem.module.scss";
 import Button from "../Button/Button";
 import { useDispatch } from "react-redux";
-import { addItem } from "../../redux/cart/cartActions";
+import { addItem } from "../../redux/cart/cartReducer";
 import { CollectionProps } from "../../types/types";
 
 const CollectionItem: FC<CollectionProps> = ({ item }) => {

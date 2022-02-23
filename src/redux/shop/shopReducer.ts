@@ -1,14 +1,32 @@
-import { createReducer } from "@reduxjs/toolkit";
-import { ICollection } from "../../types/types";
-import { updateCollections } from "./shopActions";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ICollection, ISHOP_DATA } from "../../types/types";
+import { fetchCollections } from "./shopActions";
 
 const initialState: ICollection = {} as ICollection;
 
-const shopReducer = createReducer(initialState, (builder) => {
-  builder.addCase(updateCollections, (state, action) => {
-    state.collections = action.payload;
-  });
-  builder.addDefaultCase((state) => state);
+const shopSlice = createSlice({
+  initialState,
+  name: "shop",
+  reducers: {
+    updateCollections(state, action: PayloadAction<ISHOP_DATA>) {
+      state.collections = action.payload;
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchCollections.fulfilled, (state, actions) => {
+        state.collections = actions.payload;
+        state.isFetching = false;
+      })
+      .addCase(fetchCollections.pending, (state) => {
+        state.isFetching = true;
+      })
+      .addCase(fetchCollections.rejected, (state) => {
+        state.isFetching = false;
+      });
+  },
 });
 
-export default shopReducer;
+export const { updateCollections } = shopSlice.actions;
+
+export default shopSlice.reducer;

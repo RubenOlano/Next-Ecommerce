@@ -4,7 +4,7 @@ import Homepage from "../components/Homepage/Homepage";
 import { auth, createUserProfileDocument } from "../firebase/firebase.util";
 import { onSnapshot } from "firebase/firestore";
 import { useDispatch, useSelector } from "react-redux";
-import setCurrentUser from "../redux/user/userActions";
+import { setCurrentUser } from "../redux/user/userReducer";
 import { Unsubscribe } from "firebase/auth";
 import { RootState } from "../redux/rootReducer";
 import { selectCollectionsForPreview } from "../redux/shop/shopSelector";

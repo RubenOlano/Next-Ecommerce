@@ -1,27 +1,19 @@
-import { collection, onSnapshot } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import CollectionComponent from "../../components/CollectionComponent/CollectionComponent";
 import WithSpinner from "../../components/Spinner/WithSpinner";
-import {
-  convertCollectionsSnapshotToMap,
-  firestore,
-} from "../../firebase/firebase.util";
-import { updateCollections } from "../../redux/shop/shopActions";
+import { RootState } from "../../redux/rootReducer";
+import { fetchCollections } from "../../redux/shop/shopActions";
 
 const CollectionComponentWithSpinner = WithSpinner(CollectionComponent);
 
 const Collection = () => {
+  const loading = useSelector((state: RootState) => state.shop.isFetching);
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
-    const collectionRef = collection(firestore, "collection");
-    onSnapshot(collectionRef, (snapshot) => {
-      const collection = convertCollectionsSnapshotToMap(snapshot);
-      dispatch(updateCollections(collection));
-      setLoading(false);
-    });
-  }, []);
+    dispatch(fetchCollections());
+  }, [dispatch]);
+
   return <CollectionComponentWithSpinner isLoading={loading} />;
 };
 
