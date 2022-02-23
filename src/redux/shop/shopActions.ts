@@ -11,8 +11,6 @@ export const fetchCollections = createAsyncThunk(
     const collectionRef = collection(firestore, "collection");
     return await getDocs(collectionRef).then((snapshot) => {
       const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-      console.log(collectionsMap);
-
       return collectionsMap;
     });
   },

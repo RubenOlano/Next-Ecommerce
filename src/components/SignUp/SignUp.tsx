@@ -28,7 +28,6 @@ const SignUp = () => {
       );
       createUserProfileDocument(user);
       setNewUser(initInfo);
-      console.log(user);
     } catch (error) {
       console.log(error);
     }
