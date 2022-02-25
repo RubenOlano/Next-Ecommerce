@@ -1,19 +1,20 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/.pnp
+client/node_modules/
+server/node_modules/
+
+*/.pnp
 .pnp.js
-/src/components/Shop/shop.data.ts
 # testing
-/coverage
+*/coverage
 
 # next.js
-/.next/
-/out/
+client/.next
+client/out/
 
 # production
-/build
+*/build
 
 # misc
 .DS_Store
@@ -31,7 +32,7 @@ yarn-error.log*
 .env.production.local
 
 # vercel
-.vercel
+/client/.vercel
 
 # typescript
 *.tsbuildinfo
@@ -40,3 +41,7 @@ yarn-error.log*
 .firebase/
 .firebaserc
 firebase.json
+
+#server files
+server/.env
+server/dist/
