@@ -9,10 +9,13 @@ const StripeButton: FC<StripeProps> = ({ price }) => {
     "pk_test_51KUzVCDzPe6ONc7iNtQ8NVK3PwS3nCE6ZcEb4Xkck1FCvPWtDtjlR2Dt5XZ9iBIh0eJbWS2N1PKFwU1MJ2ofSpAG00t15nQLOv";
 
   const onToken = async (token: Token) => {
-    const res = await axios.post("http://localhost:5000/payment", {
-      amount: priceForStripe,
-      token,
-    });
+    const res = await axios.post(
+      "https://next-stripe-payments.herokuapp.com/payment",
+      {
+        amount: priceForStripe,
+        token,
+      }
+    );
     if (res.status < 300) {
       alert("Payment successful");
       console.log(res.data);
