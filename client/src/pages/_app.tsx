@@ -5,6 +5,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import Header from "../components/Header/Header";
 import Head from "next/head";
 import "./styles.scss";
+import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
@@ -14,7 +15,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           <meta name="ECommerce" content="Ecommerce using nextjs" />
         </Head>
         <Header />
-        <Component {...pageProps} />
+        <ErrorBoundary>
+          <Component {...pageProps} />
+        </ErrorBoundary>
       </PersistGate>
     </Provider>
   );

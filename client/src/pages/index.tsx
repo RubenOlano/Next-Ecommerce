@@ -6,7 +6,6 @@ import { checkUserSession } from "../redux/user/userReducer";
 
 const Home: NextPage = () => {
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(checkUserSession());
   }, [dispatch]);
