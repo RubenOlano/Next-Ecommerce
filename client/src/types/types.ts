@@ -83,6 +83,7 @@ export interface ITEMS {
 export interface PreviewCollectionProps {
   title: string;
   items: ITEMS[];
+  routeName: string;
 }
 
 export interface collection {

@@ -13,6 +13,7 @@ const CollectionsOverview = () => {
           key={item.id}
           title={item.title}
           items={item.items}
+          routeName={item.routeName}
         />
       ))}
     </div>
