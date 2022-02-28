@@ -18,7 +18,7 @@ import {
   createUserProfileDocument,
   getCurrentUser,
 } from "../../firebase/firebase.util";
-import { ICartItems, ICartState } from "../../types/types";
+import { ICartItems } from "../../types/types";
 import { SignInSuccess, signOutSuccess } from "../user/userReducer";
 import {
   addItem,
@@ -74,7 +74,6 @@ export function* updateFirebase(): Generator<any, any, any> {
   const price: number = yield select(getPrice);
   const quantity: number = yield select(getQuantity);
 
-  console.log(items);
   yield call(updateDoc, userRef, {
     cart: items,
     totalCount: quantity,
