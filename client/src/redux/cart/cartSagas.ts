@@ -76,7 +76,7 @@ export function* updateFirebase(): Generator<any, any, any> {
 
   yield updateDoc(userRef, {
     cart: items,
-    totalCound: quantity,
+    totalCount: quantity,
     totalPrice: price,
   });
 }
