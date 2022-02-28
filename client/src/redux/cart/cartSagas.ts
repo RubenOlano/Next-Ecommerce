@@ -74,9 +74,9 @@ export function* updateFirebase(): Generator<any, any, any> {
   const price: number = yield select(getPrice);
   const quantity: number = yield select(getQuantity);
 
-  yield call(updateDoc, userRef, {
+  yield updateDoc(userRef, {
     cart: items,
-    totalCount: quantity,
+    totalCound: quantity,
     totalPrice: price,
   });
 }
