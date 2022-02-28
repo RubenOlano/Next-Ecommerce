@@ -42,9 +42,9 @@ const cartSlice = createSlice({
       state.totalPrice = 0;
     },
     getInitCart(state, { payload }: PayloadAction<ICartState>) {
-      state.cartItems = payload.cartItems;
-      state.totalCount = payload.totalCount;
-      state.totalPrice = payload.totalPrice;
+      state.cartItems = payload.cartItems || [];
+      state.totalCount = payload.totalCount || 0;
+      state.totalPrice = payload.totalPrice || 0;
     },
   },
 });
