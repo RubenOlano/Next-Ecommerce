@@ -41,10 +41,21 @@ const cartSlice = createSlice({
       state.totalCount = 0;
       state.totalPrice = 0;
     },
+    getInitCart(state, { payload }: PayloadAction<ICartState>) {
+      state.cartItems = payload.cartItems;
+      state.totalCount = payload.totalCount;
+      state.totalPrice = payload.totalPrice;
+    },
   },
 });
 
-export const { toggleHidden, addItem, removeItem, clearItems, clearCart } =
-  cartSlice.actions;
+export const {
+  toggleHidden,
+  addItem,
+  removeItem,
+  clearItems,
+  clearCart,
+  getInitCart,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;
