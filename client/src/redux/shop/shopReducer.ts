@@ -15,8 +15,8 @@ const shopSlice = createSlice({
       state.collections = action.payload;
       state.isFetching = false;
     },
-    fetchfailure(state, action: PayloadAction<any>) {
-      state.errorMessage = action.payload;
+    fetchfailure(state, action: PayloadAction<unknown>) {
+      state.errorMessage = action.payload as string;
     },
   },
   extraReducers: (builder) => {

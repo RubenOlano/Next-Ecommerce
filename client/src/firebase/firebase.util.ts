@@ -32,7 +32,7 @@ export const firestore = getFirestore(firebase);
 
 export const createUserProfileDocument = async (
   userAuth: User | null,
-  inputName: any
+  inputName: unknown
 ) => {
   if (!userAuth) return;
   const docRef = doc(firestore, "/users", userAuth.uid);

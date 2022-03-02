@@ -18,7 +18,7 @@ import {
   createUserProfileDocument,
   getCurrentUser,
 } from "../../firebase/firebase.util";
-import { ICartItems } from "../../types/types";
+import { ICartItems, ICartState } from "../../types/types";
 import { SignInSuccess, signOutSuccess } from "../user/userReducer";
 import {
   addItem,
@@ -37,7 +37,11 @@ export function* onSignOutSuccess() {
   yield takeLatest(signOutSuccess, clearCartOnSignout);
 }
 
-export function* getCartFromFirebase(): Generator<any, any, any> {
+export function* getCartFromFirebase(): Generator<
+  unknown,
+  User | undefined | DocumentReference | DocumentSnapshot | void,
+  never
+> {
   const user: User = yield getCurrentUser();
   if (!user) return;
   const userRef: DocumentReference<DocumentData> = yield call(
@@ -45,14 +49,17 @@ export function* getCartFromFirebase(): Generator<any, any, any> {
     user,
     null
   );
-  const userSnap: DocumentSnapshot<any> = yield call(getDoc, userRef);
+  const userSnap: DocumentSnapshot<User & ICartState> = yield call(
+    getDoc,
+    userRef
+  );
   const initCart = userSnap.data();
   yield put(
     getInitCart({
-      cartItems: initCart.cart,
+      cartItems: initCart?.cartItems || [],
       hidden: true,
-      totalCount: initCart.totalCount,
-      totalPrice: initCart.totalPrice,
+      totalCount: initCart?.totalCount || 0,
+      totalPrice: initCart?.totalPrice || 0,
     })
   );
 }
@@ -61,7 +68,11 @@ export function* onSignInSuccess() {
   yield takeLatest(SignInSuccess, getCartFromFirebase);
 }
 
-export function* updateFirebase(): Generator<any, any, any> {
+export function* updateFirebase(): Generator<
+  unknown,
+  User | undefined | DocumentReference | ICartItems[] | number | void,
+  never
+> {
   const user: User = yield getCurrentUser();
   if (!user) return;
   const userRef: DocumentReference<DocumentData> = yield call(
@@ -75,7 +86,7 @@ export function* updateFirebase(): Generator<any, any, any> {
   const quantity: number = yield select(getQuantity);
 
   yield updateDoc(userRef, {
-    cart: items,
+    cartItems: items,
     totalCount: quantity,
     totalPrice: price,
   });

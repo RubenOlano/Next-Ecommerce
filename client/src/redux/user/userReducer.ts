@@ -9,20 +9,21 @@ const userSlice = createSlice({
   initialState: initState,
   name: "user",
   reducers: {
-    setCurrentUser(state, action: PayloadAction<any>) {
+    setCurrentUser(state, action: PayloadAction<unknown>) {
       state.currentUser = action.payload;
     },
     GoogleSignIn(state) {
       return state;
     },
     EmailSignIn(state, _action: PayloadAction<emailAndPassword>) {
+      _action;
       return state;
     },
-    SignInSuccess(state, action: PayloadAction<any>) {
+    SignInSuccess(state, action: PayloadAction<unknown>) {
       state.error = null;
       state.currentUser = action.payload;
     },
-    SignInFailure(state, action: PayloadAction<any>) {
+    SignInFailure(state, action: PayloadAction<unknown>) {
       state.error = action.payload;
       console.log(action.payload);
     },
@@ -36,16 +37,17 @@ const userSlice = createSlice({
       state.currentUser = null;
       state.error = null;
     },
-    signOutFailure(state, action: PayloadAction<any>) {
+    signOutFailure(state, action: PayloadAction<unknown>) {
       state.error = action.payload;
     },
     signUp(state, _payload: PayloadAction<info>) {
+      _payload;
       return state;
     },
     signUpSuccess(state) {
       return state;
     },
-    signUpFailure(state, action: PayloadAction<any>) {
+    signUpFailure(state, action: PayloadAction<unknown>) {
       state.error = action.payload;
     },
   },

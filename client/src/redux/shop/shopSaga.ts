@@ -12,7 +12,11 @@ import {
 import { ISHOP_DATA } from "../../types/types";
 import { fetchfailure, fetchSuccess } from "./shopReducer";
 
-function* fetchCollectionsAsync(): Generator<any, any, any> {
+function* fetchCollectionsAsync(): Generator<
+  unknown,
+  QuerySnapshot<DocumentData> | ISHOP_DATA | void,
+  never
+> {
   try {
     const collectionRef = collection(firestore, "collection");
     const snapshot: QuerySnapshot<DocumentData> = yield getDocs(collectionRef);

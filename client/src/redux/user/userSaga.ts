@@ -34,17 +34,23 @@ import {
   signUpSuccess,
 } from "./userReducer";
 
-export function* getSnapshotFromAuth(userAuth: User): Generator<any, any, any> {
+export function* getSnapshotFromAuth(
+  userAuth: User
+): Generator<unknown, DocumentReference | DocumentSnapshot | void, never> {
   const userRef: DocumentReference<DocumentData> = yield call(
     createUserProfileDocument,
     userAuth,
     null
   );
-  const userSnapshot: DocumentSnapshot<any> = yield call(getDoc, userRef);
+  const userSnapshot: DocumentSnapshot<unknown> = yield call(getDoc, userRef);
   yield put(SignInSuccess(userSnapshot.data()));
 }
 
-export function* signInWithgoogle(): Generator<any, any, any> {
+export function* signInWithgoogle(): Generator<
+  unknown,
+  UserCredential | void,
+  never
+> {
   try {
     const { user }: UserCredential = yield signInWithPopup(
       auth,
@@ -58,7 +64,11 @@ export function* signInWithgoogle(): Generator<any, any, any> {
 
 export function* signInWithEmail({
   payload: emailAndPassword,
-}: PayloadAction<emailAndPassword>): Generator<any, any, any> {
+}: PayloadAction<emailAndPassword>): Generator<
+  unknown,
+  UserCredential | void,
+  never
+> {
   try {
     const { user }: UserCredential = yield signInWithEmailAndPassword(
       auth,
@@ -79,7 +89,11 @@ export function* onEmailSignInStart() {
   yield takeLatest(EmailSignIn, signInWithEmail);
 }
 
-export function* isUserAuthenticated(): Generator<any, any, any> {
+export function* isUserAuthenticated(): Generator<
+  unknown,
+  User | undefined | void,
+  never
+> {
   try {
     const userAuth: User = yield getCurrentUser();
     if (!userAuth) return;
@@ -93,7 +107,7 @@ export function* onCheckUserSession() {
   yield takeLatest(checkUserSession, isUserAuthenticated);
 }
 
-export function* signOutAuth(): Generator<any, any, any> {
+export function* signOutAuth(): Generator<unknown, void, never> {
   try {
     yield auth.signOut();
     yield put(signOutSuccess());
@@ -107,9 +121,9 @@ export function* onSignOut() {
 
 export function* signUpAsync({
   payload: newUser,
-}: PayloadAction<info>): Generator<any, any, any> {
+}: PayloadAction<info>): Generator<unknown, UserCredential | void, never> {
   try {
-    const { user } = yield createUserWithEmailAndPassword(
+    const { user }: UserCredential = yield createUserWithEmailAndPassword(
       auth,
       newUser.email,
       newUser.password
