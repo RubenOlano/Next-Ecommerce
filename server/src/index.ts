@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
-import path from "path";
 import "dotenv/config";
 import { Stripe } from "stripe";
 const stripe = new Stripe(process.env.STRIPE_SECRET as string, {
@@ -25,7 +24,8 @@ app.post("/payment", async (req, res) => {
     currency: "USD",
   };
   const response = await stripe.charges.create(body);
-  if (response.status == "failed")
-    return res.status(500).send({ errror: response.failure_message });
+  if (response.status === "failed") {
+    return res.status(500).send({ errror: response });
+  }
   return res.status(200).send({ success: response });
 });

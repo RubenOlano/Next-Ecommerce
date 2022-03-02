@@ -1,6 +1,6 @@
 export interface ButtonProps {
   type?: "submit" | "button";
-  onClick?: () => any;
+  onClick?: () => unknown;
   isGoogleSignIn?: boolean;
   inverted?: boolean;
   className?: string;
@@ -61,8 +61,8 @@ export interface ICollection {
   errorMessage?: string;
 }
 export interface IUserState {
-  currentUser: any;
-  error: any;
+  currentUser: unknown;
+  error: unknown;
 }
 
 export interface ISHOP_DATA {
@@ -87,15 +87,15 @@ export interface PreviewCollectionProps {
 }
 
 export interface collection {
-  routName: string;
+  routeName: string;
   id: string;
   title: string;
-  items: any[];
+  items: ITEMS[];
 }
 
 export interface SpinnerProps {
   isLoading: boolean;
-  otherProps?: any;
+  otherProps?: never;
 }
 
 export interface emailAndPassword {
